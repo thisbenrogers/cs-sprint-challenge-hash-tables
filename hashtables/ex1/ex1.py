@@ -1,22 +1,24 @@
 def get_indices_of_item_weights(weights, length, limit):
 
-    # * base test
     if length <= 1:
         return None
 
-    # * sets up empty dictionary and index counter
+    
     d = dict()
+    r = []
     i = 0
+    res = []
 
-    # * iterates through numeric values in weights list
+    
     for w in weights:
-        d[w] = [i, (limit - w)]     # * Makes an entry where key = weight, value = [index, pair weight]
-        i += 1                      # * Increments index
+        d[i] = w
+        r.append(limit - w)
+        i += 1            
 
     for k, v in d.items():
-        an_index = v[0]
-        pair_weight = v[1]
-        if pair_weight in d.keys() and k is not None:
-            return (d[pair_weight][0], an_index)
+        if v in r:
+            res[:0] = [k]
+        if len(res) == 2:
+            return tuple(res)
 
     return None
