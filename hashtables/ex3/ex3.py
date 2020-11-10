@@ -1,8 +1,22 @@
+from collections import Counter
+
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    
+    result = []
+    d = dict()
+    counter = 0
+
+    for arr in arrays:
+        counter += 1
+        for item in arr:
+            if item in d:
+                d[item] += 1
+            else:
+                d[item] = 1
+
+    for key, value in d.items():
+        if value == counter:
+            result.append(key)
 
     return result
 
